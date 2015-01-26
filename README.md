@@ -38,7 +38,7 @@
     * [আর্ডুইনে ও Relay] 
     * [LCD, Keypad, LED, Motor এর কম্বিনেশনে জটিল প্রজেক্ট তৈরি] 
 
-*[অ্যাডভান্সড]
+* [অ্যাডভান্সড]
     * [Java, C#, QtC++, Processing এর মাধ্যমে সিরিয়াল কম্যুনিকেশন] 
     * [প্যাটার্ন অ্যালগরিদম দিয়ে Line Follower Robot তৈরি] 
     * [Wall Follower/Avoider Robot তৈরি] 

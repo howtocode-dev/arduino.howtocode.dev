@@ -34,17 +34,18 @@ Arduino এর দ্বারা যা কিছু সম্ভব তা এ
 
 ## বিভিন্ন ধরণের আর্ডুইনো বোর্ড:
 ### Arduino UNO R3 (R stands for Revision):
-![alt image](http://arduino.cc/en/uploads/Main/ArduinoUno_R3_Front.jpg)
+![alt image](http://arduino.cc/en/uploads/Main/ArduinoUno_R3_Front.jpg "")
 ### Arduino Leonardo:
-![alt image](http://arduino.cc/en/uploads/Main/ArduinoLeonardoFront_2.jpg)
+![alt image](http://arduino.cc/en/uploads/Main/ArduinoLeonardoFront_2.jpg "")
 ### Arduino DUE:
-![alt image](http://arduino.cc/en/uploads/Main/ArduinoDue_Front_450px.jpg)
+![alt image](http://arduino.cc/en/uploads/Main/ArduinoDue_Front_450px.jpg "")
 ### Arduino Mega 2560:
-![alt image](http://arduino.cc/en/uploads/Main/ArduinoMega2560_R3_Front_450px.jpg)
+![alt image](http://arduino.cc/en/uploads/Main/ArduinoMega2560_R3_Front_450px.jpg "")
 ### Arduino Mega ADK [Android Development Kit]:
-![alt image](http://arduino.cc/en/uploads/Main/ArduinoADK_R3_Front_450px.jpg)
+![alt image](http://arduino.cc/en/uploads/Main/ArduinoADK_R3_Front_450px.jpg "")
 ### Arduino LilyPad:
-![alt image](http://arduino.cc/en/uploads/Main/LilyPadSimple300Front.jpg)
+![alt image](http://arduino.cc/en/uploads/Main/LilyPadSimple300Front.jpg "")
 ### Arduino Yun:
-![alt image](http://arduino.cc/en/uploads/Main/ArduinoYunFront_2_450px.jpg)
+![alt image](http://arduino.cc/en/uploads/Main/ArduinoYunFront_2_450px.jpg "")
 
+পরবর্তী পর্বে আমরা আর্ডুইনো IDE ডাউনলোড ও কনফিগার করব।

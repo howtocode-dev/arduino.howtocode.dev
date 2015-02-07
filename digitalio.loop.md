@@ -207,7 +207,7 @@ if (6 < 7)
 
 ## নোট:
 
-### Pull Up Resistor: Pull Up Resistor
+### Pull Up Resistor, Pull Down Resistor
 
 ![alt text](http://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Pullup_Resistor.png/220px-Pullup_Resistor.png)
 

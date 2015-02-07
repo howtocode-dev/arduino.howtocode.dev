@@ -55,7 +55,7 @@
 
 আর্ডুইনো প্রোগ্রামিং সম্পর্কে ধারণার জন্য আমরা গতবারের করা `Blink` প্রোগ্রামটি আরেকবার দেখতে পারি। তার আগে বলে রাখা ভাল, আর্ডুইনোর প্রোগ্রাম ফাইলের নাম `.ino` পূর্বে `.pde` ছিল।
 
-```
+```arduino
 int ledPin = 13; // Putting integer value in a variable [A single line comment]
  
 /* This is a Multiline
@@ -85,7 +85,7 @@ void loop()
 ভ্যারিয়েবল আমরা বক্স হিসেবে কল্পনা করতে পারি, ধরা যাক `toy KhelnarBaksho = gari;` এটা দ্বারা বুঝালাম `toy` হল একটা থিংটাইপ `(thing)` আর `KhelnarBaksho` একটি বাক্স আর ‘=’ চিহ্ন দিয়ে `gari` দিয়ে বুঝালাম আপনার খেলনার গাড়িটি এর মধ্যে রাখুন। (আবার toy কে সিরিয়াসলি কোন টাইপ ধরবেন না, এটা দ্বারা উদাহরণ দিলাম মাত্র :P )
 
 ##### নিচের কোডটি দেখা যাক:
-```	
+```	cpp
 toy khelnarBaksho = jeep;
 khelnarBaksho = remoteControlledCar;
 ```
@@ -95,7 +95,7 @@ khelnarBaksho = remoteControlledCar;
 এখন যদি আমি, `khelnarBaksho = remoteControlledCar` লিখি তাহলে কিন্তু একটা ছোট্ট সমস্যা আছে। সেটা হল এই কাজটি করার সাথে সাথে আপনার `jeep` টি `replaced` হয়ে যাবে এবং আপনি তাকে আর ফিরে পাবেন না। :P এখানে আরেকটি লক্ষণীয় বিষয় এই যে, আমি প্রথমবার `toy` কথাটা লিখেছি কিন্তু পরেরবার আর লিখিনি। আসলে প্রথমবার আমি যখন `toy` কথাটি লিখে বাক্স তৈরি করেছি তখন অটোমেটিক তার জন্য মেমরিতে জায়গা তৈরি হয়ে গেছে যেটি একটি `toy type` জিনিস গ্রহণ করবে।
 
 যদি আমি আমার `jeep` এবং `remoteControlledCar` দুইটাই রাখতে চাই তাহলে নিচের কোডটি লিখব:
-```
+```cpp
 toy jeepBox, remoteControllledCarBox;
 jeepBox = jeep;
 remoteControlledCarBox = remoteControlledCar;

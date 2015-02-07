@@ -19,7 +19,7 @@
 
 ### প্রোগ্রামটা দেখে নেওয়া যাক:
 
-```
+```arduino
 int ledPin = 13;
  
 void setup()
@@ -42,7 +42,7 @@ void loop()
 
 ### Line 10:
 
-```
+```cpp
 for (int i = 100; i <= 1000; i = i + 100){
 // Statements goes here
 }
@@ -50,7 +50,7 @@ for (int i = 100; i <= 1000; i = i + 100){
 
 এইখানে লুপ ব্যাবহার করা হয়েছে। আমাদের অনেক সময় একই কাজ বারবার করতে হয়। একই কাজ বারংবার করার প্রক্রিয়াই হল লুপ। যদি আমাকে বলা হয় C তে তোমার গ্রুপের নাম ১০০ বার লিখ, সাধারণ চিন্তায় আমি দুইভাবে লিখতে পারি।
 
-```	
+```	cpp
 printf("Electroscholars"); // 1st one
 printf("Electroscholars");
 .................
@@ -58,7 +58,7 @@ printf("Electroscholars");
 printf("Electroscholars"); // The 100th one
 ```
 অথবা
-```	
+```	cpp
 int i;
 for (i = 0; i < 100; i = i + 1)
 {
@@ -142,7 +142,7 @@ for (i = 0; i < 100; i = i + 1)
 ![alt text](http://i.imgur.com/v1Ejkt5.png)
 
 ## আর্ডুইনো প্রোগ্রাম:
-```
+```arduino
 int led = 13;
 int button = 3;
  
@@ -176,7 +176,7 @@ void loop()
 ### Line 12:
 
 `if else` অত্যান্ত গুরুত্বপূর্ন একটি কনডিশনাল ফ্লো কন্ট্রোল। এখানে যেটি করা হয়, প্রথমে আমরা একটি নির্দিষ্ট স্টেটমেন্ট সিলেক্ট করি। যদি সেটা `True` হয় তাহলে এই কাজটা করবে, সেটা `False` হলে আরেকটি কাজ করবে। এটা ঠিক করার জন্য `if else` দরকার।
-```	
+```	cpp
 if (booleanCheck == True)
 {
    doThis();
@@ -186,7 +186,7 @@ if (booleanCheck == True)
 ```
 
 যেমন, আরেকটি উদাহরণ:
-```	
+```	cpp
 if (6 < 7)
 {
     printf("This is Electroscholars!");

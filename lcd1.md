@@ -152,17 +152,15 @@ const int cols = 16;
 
 #### `LiquidCrystal my_lcd(....)` 
 
-অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিং সম্পর্কে আমরা আগেই জেনে ছিলাম। এবার সেটা প্রয়োগ করার সময় চলে এসেছে। কনস্ট্রাক্টরের কথা মনে আছে তো? না মনে থাকলে [একবার দেখে নিন]()। 
+অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিং সম্পর্কে আমরা আগেই জেনে ছিলাম। এবার সেটা প্রয়োগ করার সময় চলে এসেছে। কনস্ট্রাক্টরের কথা মনে আছে তো? না মনে থাকলে [একবার দেখে নিন](http://medialab.electroscholars.com/2015/01/20/arduino-basic-oop-1/)। 
 
 `LiquidCrystal` হল ক্লাস যার ডেফিনিশন দেওয়া আছে `#LiquidCrystal.h` নামক হেডার ফাইলটিতে। আর অবজেক্ট তৈরি করতে হয় এভাবে:
 
 ```
 //Without constructor arguments
-
 the_class objectName;
 
 //If the constructor takes arguments
-
 the_class objectName(1, 2, 3);
 ```
 

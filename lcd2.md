@@ -29,13 +29,13 @@
 
 আমরা আর্ডুইনোর এই কোর্সে যেসব লাইব্রেরি ব্যবহার করব
 
-* [SoftwareSerial]()
-* [LiquidCrystal]()
-* [Wifi]()
-* [NewPing]()
-* [SPI]()
+* [SoftwareSerial](http://www.arduino.cc/en/Reference/SoftwareSerial)
+* [LiquidCrystal](http://www.arduino.cc/en/Reference/LiquidCrystal)
+* [Wifi](http://www.arduino.cc/en/Reference/WiFi)
+* [NewPing](http://playground.arduino.cc/Code/NewPing)
+* [SPI](http://www.arduino.cc/en/Reference/SPI)
 
-ইত্যাদি
+[ইত্যাদি](http://www.arduino.cc/en/Reference/Libraries)
 
 ## আর্ডুইনো লাইব্রেরির গঠন 
 
@@ -73,10 +73,6 @@
 
 ![added_new_files](http://i.imgur.com/BpyCzzk.png)
 
-## লাইব্রেরি ট্রি ডিরেক্টরি ডায়াগ্রাম
-
-![tree_dir]()
-
 
 # লাইব্রেরি লজিক
 
@@ -105,6 +101,15 @@ LiquidCrystal লাইব্রেরিকে মডিফাই করে আ
 * যদি y এর মান LCD এর maxRow এর সংখ্যার সমান হয়:
     * x এর মান ০ বসাব
     * y এর মান ০ বসাব
+    
+    
+ছবিতে:
+
+![img1](http://i.imgur.com/cwD4crv.png)
+![img2](http://i.imgur.com/kNYMs3E.png)
+![img3](http://i.imgur.com/5k2ORUm.png)
+![img4](http://i.imgur.com/EbjAFvj.png)
+
     
 ### কাজের ধারা:
 
@@ -379,3 +384,39 @@ void setup()
 void loop() {}
 ```
 
+এভাবে আপনার একটি পরিপূর্ণ লাইব্রেরি তৈরি হয়ে গেল। এবার যদি লাইব্রেরিটি ব্যবহার বা ডিবাগ করতে চান তাহলে নিচের কাজগুলো করতে হব।
+
+## তৈরিকৃত লাইব্রেরি ব্যবহার ও ডিবাগিং
+
+আপনার তৈরি করা লাইব্রেরি Arduino IDE তে দুইভাবে অ্যাড করে ব্যবহার করতে পারেন।
+
+#### প্রথম পদ্ধতি: সরাসরি লাইব্রেরি Arduino IDE তে অ্যাড করে
+
+তৈরি করা লাইব্রেরি ফোল্ডারটি কপি করুন ও `C:\Users\user_name\Documents\Arduino\libraries\` এই ডিরেক্টরিতে পেস্ট করুন।
+
+#### দ্বিতীয় পদ্ধতি: কম্প্রেসড (.zip) লাইব্রেরি অ্যাড করে 
+
+লাইব্রেরিটি জিপ করুন। তারপর Arduino IDE ওপেন করে Sketch > Import Library > your_library.zip সিলেক্ট করুন। 
+
+![add_lib](http://i.imgur.com/RCAlwXY.gif)
+
+হাইলাইটিং না দেখতে পেলে Arduino IDE রিস্টার্ট করে দেখুন হাইলাইট করছে কিনা। তাও না করলে keywords.txt ফাইল চেক করে দেখুন ক্লাস, প্রোপার্টি বা মেথডের পরে TAB দিয়েছেন নাকি Space দিয়েছেন। Space দিলে হাইলাইটিং কাজ করবে না।
+
+
+## লাইব্রেরি ইন অ্যাকশন:
+
+আপনি ইচ্ছা করলে আগের পর্বের প্রোটিয়াস ফাইলটা ব্যবহার করতে পারেন, কানেকশনের পরিবর্তন আনা হয় নি। আমি এখানে সিম্যুলেশনের বদলে বাস্তবে করে দেখালাম। এখানে আমি ScrollText.ino ফাইলটা আর্ডুইনোতে আপ্লোড করেছি।
+
+![library_working](http://i.imgur.com/43WLOfy.gif)
+
+## বাড়ির কাজ:
+
+আমার তৈরি করা লাইব্রেরিতে কয়েকটি সমস্যা আছে। তার মধ্যে দুইটি সল্ভ করতে হবে,
+
+১। word_scroll মেথডটিতে আমি while(true) বা একটি Infinite loop ব্যবহার করেছি। আপনাকে এমনভাবে লাইব্রেরিকে মডিফাই করতে হবে যেন আমি word_scroll মেথড টা কন্ট্রোল করতে পারি। অর্থাৎ, infinite loop ব্যবহার না করে স্ক্রলিং কন্ট্রোল করতে হবে। আপনি ইচ্ছা করলে Button, Serial ইত্যাদি সবকিছু ব্যবহার করে এটা করতে পারেন। মানে আপনার সল্যুশনটা সফটওয়্যার বা হার্ডওয়্যার যেকোন ভিত্তিক হতে পারে।
+
+২। একটা জিনিস খেয়াল করেছেন, word_scroll মেথডটা তখনই কাজ করবে যখন শব্দের দৈর্ঘ্য LCD এর কলামের দৈর্ঘ্যের চেয়ে ছোট। আপনাকে এটাকে এমনভাবে মডিফাই করতে হবে যেন এই ফাংশনটি সব আকারের স্ট্রিং বা শব্দের জন্য কাজ করে।
+
+## কোড ও সিম্যুলেশন প্রজেক্ট ফাইল
+
+প্রজেক্ট কোড ও সিম্যুলেশনের ফাইলগুলো ডাউনলোড করুন [এখান](https://github.com/howtocode-com-bd/arduino.howtocode.com.bd/tree/master/LCDLibraryProjectFiles) থেকে।

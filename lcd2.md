@@ -5,8 +5,11 @@
 ১। একটি ভাল `C/C++ IDE [Code::blocks, Codelite, Qt Creator, Visual Studio..]` অথবা `Text Editor [Notepad++, Sublime Text Editor, Atom, Brackets ...]`
 
 ২। লাইব্রেরি টেস্ট করার জন্য `Official Arduino IDE` 
+
 ৩। যেকোন আর্ডুইনো বোর্ড
+
 ৪। বোর্ড না থাকলে সিম্যুলেশনের জন্য প্রোটিয়াস (Proteus)
+
 ৫। LCD Module (যেকোন ডাইমেনশনের)
 
 ## লাইব্রেরি তৈরি করার যৌক্তিকতা:

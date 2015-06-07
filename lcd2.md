@@ -51,6 +51,7 @@
     * `MyLibrary.cpp [MyLibrary/MyLibrary.cpp]` : এটা হল আপনার তৈরি করা Header ফাইলের সোর্স ফাইল। নাম একই হতে হবে এমন কোন কথা নাই, নাম এক হলে চিনতে সুবিধা হয়। 
     * অন্যান্য *.h ও *.cpp ফাইল [MyLibrary/Others.h, MyLibrary/Others.cpp]: আপনার তৈরি লাইব্রেরি যদি অন্য কোন লাইব্রেরি / ক্লাস বা মেথড নির্ভরশীল হয় তাহলে সে ফাইলগুলো আপনার লাইব্রেরির ফোল্ডারে রেখে দেবেন। 
     
+    
 ### এই পর্বের লাইব্রেরির উদাহরণ:
 
 আমরা `LiquidCrystal` লাইব্রেরিকে মডিফাই করব, তাহলে আমাদের লাইব্রেরির জন্য যে ফাইল/ ফোল্ডারগুলো লাগবে, একনজরে দেখা যাক:
@@ -72,7 +73,14 @@
 
 ![added_new_files](http://i.imgur.com/BpyCzzk.png)
 
+## লাইব্রেরি ট্রি ডিরেক্টরি ডায়াগ্রাম
+
+![tree_dir]()
+
+
 # লাইব্রেরি লজিক
+
+আগেই বলে নেই, যে লজিকটা এখানে আমি ইম্প্লিমেন্ট করব সেটা Buggy এবং অনেক সমস্যা আছে। এই সমস্যাগুলোর কয়েকটা আমি উল্লেখ করে দেব এবং সল্ভ করার কিছু হিন্টস দেব, তবে সমস্যাটা আপনাকেই সল্ভ করতে হবে। যদি এর সমাধান চেয়ে অনেক রেসপন্স আসে তাহলে তার সমাধান দেওয়ার চেষ্টা করব। 
 
 
 ### যা করতে চাই:
@@ -82,9 +90,22 @@ LiquidCrystal লাইব্রেরিকে মডিফাই করে আ
 
 ### অ্যালগরিদম
 
-* যে স্ট্রিংকে স্ক্রল করাতে হবে সেটাকে (0,0) তে প্লেস করে প্রিন্ট করব
-* স্ট্রিং থেকে LCD এর বাউন্ডারি দূরত্ব ক্যালকুলেট করব 
 
+চলবে:
+
+* যদি স্ট্রিংয়ের প্রথম বর্ণ থেকে LCD এর বাউন্ডারি (maxCol) এর দূরত্ব শব্দের দৈর্ঘ্যের চেয়ে বেশি বা সমান হলে হয়:
+    * যে স্ট্রিংকে স্ক্রল করাতে হবে সেটাকে (x,y) তে প্লেস করে প্রিন্ট করব
+    * del সময় অপেক্ষা করব 
+    * LCD ক্লিয়ার করব
+    * x এর মান ১ বাড়াব
+    * যদি দূরত্ব শব্দের দৈর্ঘ্যের সমান হয়:
+        * y এর মান ১ বাড়াব
+        * x এ ০ বসাব
+
+* যদি y এর মান LCD এর maxRow এর সংখ্যার সমান হয়:
+    * x এর মান ০ বসাব
+    * y এর মান ০ বসাব
+    
 ### কাজের ধারা:
 
 যেভাবে কাজটি করব
@@ -216,6 +237,145 @@ class MyLiquidCrystal : public LiquidCrystal {
 
 ### ৪। সোর্স ফাইল লেখা [MyLiquidCrystal.cpp]
 
-হেডার ফাইল তৈরি করার পরে সোর্স ফাইলে সেই ফাংশনগুলোর লজিক বসাতে হয়। 
+হেডার ফাইল তৈরি করার পরে সোর্স ফাইলে সেই ফাংশনগুলোর লজিক বসাতে হয়। এখানে আমরা যেসব মেথড ইম্প্লিমেন্ট করব, প্রত্যেকটি MyLiquidCrystal ক্লাসের। OOP এর স্ট্রাকচার অনুযায়ী, কোন ক্লাসের মেথড যদি Out of Class ইম্প্লিমেন্ট করতে হয় তাহলে তাকে এভাবে লিখতে হয়:
+`return_type className :: (scope_resolution_operator) functionName(argument)`
 
-    
+ঠিক সেভাবে আমরা যদি সম্পূর্ণ কোড লিখি তাহলে,
+
+```cpp
+#include "MyLiquidCrystal.h"
+
+//Initialize LCD
+void MyLiquidCrystal::set_lcd(byte col, byte row)
+{
+    lcdRows = row;
+    lcdCols = col;
+    begin(col, row);
+}
+
+//Getting Rows and Columns
+byte MyLiquidCrystal::get_col(void)
+{
+    return lcdCols;
+}
+
+byte MyLiquidCrystal::get_row(void)
+{
+    return lcdRows;
+}
+
+//Getting Current Distance
+//It is measured from the first character of the string upto the boundary
+
+byte MyLiquidCrystal::get_distance(void)
+{
+
+    return get_col() + 1 - x;
+}
+
+//Function that actually does the scrolling
+void MyLiquidCrystal::word_scroll(char *str, byte del)
+{
+    //Getting the string length
+    wordLength = strlen(str);
+    scrollDelay = del;
+
+    //Getting row and column
+    byte maxCol = get_col();
+    byte maxRow = get_row();
+
+    //Infinite Loop [You have to customize and solve it]
+    //Buggy code
+    while (true){
+        if (get_distance() >= wordLength){
+
+            /* Algorithm
+             * -> Check if the distance is greater or equal to the wordlength
+             * -> set Cursor at a coordinate
+             * -> Print the string
+             * -> wait about delay time
+             * -> clear the lcd
+             * -> Increase x one character
+             * -> Check if the word is at boundary
+             * -> if it's in the boundary then increase y and set x = 0
+             * -> follow the  algorithm from beginning
+             * */
+            setCursor(x, y);
+            print(str);
+            delay(scrollDelay);
+            clear();
+            x++;
+            if (get_distance() == wordLength)
+            {
+                x = 0;
+                y++;
+            }
+        }
+        //If the cursor is at the bottom then setting the cursor at the beginning
+        if(y == maxRow) {x = 0; y = 0;}
+    }
+}
+
+```
+
+### ৫। Syntax Highlighting অ্যাড করার জন্য keywords.txt ফাইল এডিট করা
+
+যদি আপনি চান Arduino IDE তে আপনার লাইব্রেরি অ্যাড করলে এটি অন্যসব লাইব্রেরির মত আপনার লাইব্রেরির ক্লাস, মেথড হাইলাইট করে দেবে তাহলে আপনার একটি ছোট্ট কাজ করতে হবে। লাইব্রেরির ডিরেক্টরিতে keywords.txt ফাইল তৈরি করে সেখানে আপনার ক্লাস নেম লিখে ট্যাব (TAB) দিয়ে [অবশ্যই TAB দিতে হবে, স্পেস দিলে হবে না; ক্লাস/মেথড লিখে ট্যাব দিয়েছেন কিনা সেটা লক্ষ্য রাখলেই হবে, কয় স্পেসের ট্যাব হতে হবে সেটা গুরুত্বপূর্ণ বিষয় নয়]।
+
+সাধারণত `Class` এর জন্য `KEYWORD1` এবং `Method` এর জন্য `KEYWORD2` ব্যবহার করা হয়। নিচে আমার তৈরি keywords.txt ফাইলটা দেওয়া হল।
+
+```
+
+#########################################
+# Syntax Coloring Map For MyLiquidCrystal
+#########################################
+
+###################################
+# Datatypes (KEYWORD1)
+###################################
+
+MyLiquidCrystal	KEYWORD1
+
+###################################
+# Methods and Functions (KEYWORD2)
+###################################
+  
+word_scroll	KEYWORD2
+set_lcd	KEYWORD2
+get_row	KEYWORD2
+get_col	KEYWORD2
+get_distance	KEYWORD2
+
+```
+
+মোটামুটি প্রায় সবকাজ শেষ, বাকি থাকল শুধু একটা Example লেখা।
+
+### ৬। examples অ্যাড করা 
+
+আপনার লাইব্রেরি কীভাবে ব্যবহার করতে হয় সেটা যদি একটু দেখিয়ে দেন তাহলে যারা আপনার লাইব্রেরি ব্যবহার করবে তাদের জন্য সুবিধাজনক। examples অ্যাড করার জন্য আপনার লাইব্রেরির ডিরেক্টরিতে examples ফোল্ডারের ভিতর একটি ফোল্ডার তৈরি করুন। আমার ক্ষেত্রে ScrollText।
+
+এই ফোল্ডারের ভিতরে হুবহু এই ফোল্ডারের নাম দিয়ে একটা .ino ফাইল তৈরি করুন। আমি ScrollText.ino নামক ফাইল তৈরি করলাম। 
+
+ScrollText.ino ফাইলের ভিতরে আমি MyLiquidCrystal লাইব্রেরি ব্যবহার করে দেখাব।
+
+```cpp
+#include <MyLiquidCrystal.h>
+
+
+//Creating MyLiquidCrystal Object, constructor same as  LiquidCrystal
+MyLiquidCrystal myLcd(2, 3, 4, 5, 6, 7);
+
+
+void setup()
+{
+  //Initializing the lcd module, set_lcd calls begin method so don't need to call lcd.begin
+  
+  myLcd.set_lcd(20, 4);
+  
+  //String scroll method
+  myLcd.word_scroll("Manash", 100);
+}
+
+void loop() {}
+```
+

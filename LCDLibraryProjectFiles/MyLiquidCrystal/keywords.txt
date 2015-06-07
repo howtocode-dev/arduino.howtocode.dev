@@ -1,0 +1,31 @@
+
+#########################################
+# Syntax Coloring Map For MyLiquidCrystal
+#########################################
+
+###################################
+# Datatypes (KEYWORD1)
+###################################
+
+MyLiquidCrystal	KEYWORD1
+
+###################################
+# Methods and Functions (KEYWORD2)
+###################################
+  
+word_scroll	KEYWORD2
+set_lcd	KEYWORD2
+get_row	KEYWORD2
+get_col	KEYWORD2
+get_distance	KEYWORD2
+
+
+###################################
+# Constants (LITERAL1)
+###################################
+
+
+
+
+
+

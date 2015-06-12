@@ -193,9 +193,9 @@ class MyLiquidCrystal : public LiquidCrystal {
 class MyLiquidCrystal : public LiquidCrystal {
     private:
     
-    //Initial Position
-    byte x = 0;
-    byte y = 0;
+    //Initial Position Variable
+    byte x;
+    byte y;
 
     //Scroll Delay
     byte scrollDelay;
@@ -232,8 +232,12 @@ class MyLiquidCrystal : public LiquidCrystal {
     byte get_col(void);
 
 
-    //Using Constructor from LiquidCrystal
-    MyLiquidCrystal(byte rs, byte en, byte d4, byte d5, byte d6, byte d7) : LiquidCrystal (rs, en, d4, d5, d6, d7) {}
+    //Using Constructor from LiquidCrystal, and setting initial position to 0, 0 (or at the top left corner of the lcd)
+    MyLiquidCrystal(byte rs, byte en, byte d4, byte d5, byte d6, byte d7) : LiquidCrystal (rs, en, d4, d5, d6, d7)
+      {
+         x = 0;
+         y = 0;
+      }
 
     //Getting the distance of word
     byte get_distance(void);

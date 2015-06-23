@@ -76,12 +76,12 @@ Qt এর ক্ষেত্রে দুইটা জিনিস খেয়া�
 
 * The Book of Qt 4  - The Art of Building Qt Application
 * C++ GUI Programming in Qt - Summerfield
-* [Official Qt Documentation]() 
+* [Official Qt Documentation](http://doc.qt.io/) 
 
 #### ইউটিউব লিঙ্ক
 
-* [VoidRealms এর ১০০+ কিউট টিউটোরিয়াল]()
-* [Qt BootCamp]()
+* [VoidRealms এর ১০০+ কিউট টিউটোরিয়াল](https://www.youtube.com/user/VoidRealms)
+* [Qt BootCamp](https://www.youtube.com/playlist?list=PLizsthdRd0YzNKiEhp2yi7qPBurttkJ-M)
 
 ## Qt Designer ব্যবহার করে সিম্পল Event Driven GUI অ্যাপ্লিকেশন
 
@@ -184,8 +184,8 @@ void setup() {
 
 void loop() {
   if (Serial.available()){
-  x = Serial.read();
-  if (x == 'a') digitalWrite(led, HIGH);
+  command = Serial.read();
+  if (command == 'a') digitalWrite(led, HIGH);
   else digitalWrite(led, LOW);
   }
 }

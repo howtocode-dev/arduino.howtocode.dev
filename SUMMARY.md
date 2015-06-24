@@ -19,7 +19,7 @@
     * [আর্ডুইনো ও Relay] (relay.md)
     * [LCD, Keypad, LED, Motor এর কম্বিনেশনে জটিল প্রজেক্ট তৈরি] (combi.lcdKeypadLedMotor.md)
 * [অ্যাডভান্সড](#)
-    * [Java, C#, QtC++, Processing এর মাধ্যমে সিরিয়াল কম্যুনিকেশন] (serialinJavacscpp.md)
+    * [Qt দিয়ে Arduino এর জন্য ডেস্কটপ অ্যাপলিকেশন ডেভেলপমেন্ট](qtandarduino.md)
     * [প্যাটার্ন অ্যালগরিদম দিয়ে Line Follower Robot তৈরি] (lfr.md)
     * [Wall Follower/Avoider Robot তৈরি] (wallrobot.md)
     * [PID অ্যালগরিদম দ্বারা LFR তৈরি] (pidlfr.md)

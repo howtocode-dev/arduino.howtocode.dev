@@ -171,7 +171,9 @@ arduino->setPortName("COM12");
 ![write](http://i.imgur.com/BZkMwto.gif)
 
 * আর্ডুইনো সাইডের কোড। সিম্পল LED জ্বলা নেভার কোড, [সিরিয়াল কম্যুনিকেশনে](http://medialab.electroscholars.com/2015/02/21/arduino-serial-communication/) Serial এর মেথডগুলো সম্পর্কে জানা যাবে। কোডটি আর্ডুইনোতে আপ্লোড করুন ও কানেক্ট করে রাখুন। তারপর Qt এ প্রোগ্রামটি রান করুন:
+
 ```cpp
+
 //Arduino Side
 // Baud Rate 9600
 int led = 13;
@@ -189,7 +191,6 @@ void loop() {
   else digitalWrite(led, LOW);
   }
 }
-
 ```
 
 * আর্ডুইনোতে কোড আপ্লোড:
